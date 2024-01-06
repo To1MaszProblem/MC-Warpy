@@ -1,0 +1,7 @@
+name: MC-Warpy
+version: '${project.version}'
+main: pl.to1maszproblem.Main
+api-version: 1.16
+authors: [ To1MaszProblem ]
+commands:
+  warp:
