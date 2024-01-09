@@ -14,15 +14,15 @@ import java.util.List;
 
 @Getter
 public class Configuration extends OkaeriConfig {
-    private int menuRows = 1;
+    private int menuRows = 3;
     private int teleportTime = 5;
     private String warpMenuTitle = "&8Wybierz warp!";
     private List<Warp> warps = Arrays.asList(
-            new Warp("spawn", new ItemBuilder(Material.DIAMOND_SHOVEL).addLore(" ", "&7Kliknij aby zostać &aprzeteleportowanm&7!").build(),
-                    new Location(Bukkit.getWorld("world"), 0.0, 100.0, 0.0), 0),
-            new Warp("pvp", new ItemBuilder(Material.DIAMOND_SHOVEL).addLore(" ", "&7Kliknij aby zostać &aprzeteleportowanm&7!").build(),
-                    new Location(Bukkit.getWorld("world"), 10.0, 100.0, 10.0), 1));
+            new Warp("&aspawn", new ItemBuilder(Material.DIAMOND_SHOVEL).addLores(" ", "&7Kliknij aby zostać &aprzeteleportowanm&7!").build(),
+                    new Location(Bukkit.getWorld("world"), 0.0, 100.0, 0.0), 3),
+            new Warp("&cpvp", new ItemBuilder(Material.DIAMOND_SHOVEL).addLores(" ", "&7Kliknij aby zostać &aprzeteleportowanm&7!").build(),
+                    new Location(Bukkit.getWorld("world"), 10.0, 100.0, 10.0), 4));
     private List<ItemMenu> items = Arrays.asList(
-            new ItemMenu(new ItemBuilder(Material.PAPER).setName("&cJak działają warpy?").addLore(" ", "&7Wybierz warp do którego chcesz być przeteleportowany!").build(), 8));
+            new ItemMenu(new ItemBuilder(Material.PAPER).setName("&cJak działają warpy?").addLores(" ", "&7Wybierz warp do którego chcesz być przeteleportowany!").build(), 8));
 
 }

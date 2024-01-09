@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pl.to1maszproblem.Main;
+import pl.to1maszproblem.configuration.Configuration;
 import pl.to1maszproblem.menu.WarpMenu;
 import pl.to1maszproblem.module.Warp;
 import pl.to1maszproblem.utils.TextUtil;
@@ -21,10 +22,6 @@ public class WarpCommand implements TabExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
-            if (!player.hasPermission("warps.warp")) {
-                TextUtil.sendMessage("CHAT", player, "&8>> &cNie posiadasz uprawnień do tej komendy! &8(&4warps.warp&8)");
-                return false;
-            }
             if (args.length == 0) (new WarpMenu()).openInventory(player);
 
             if (!player.hasPermission("warps.list")) {
@@ -35,6 +32,14 @@ public class WarpCommand implements TabExecutor {
                 if (args[0].equalsIgnoreCase("list")) {
                     TextUtil.sendMessage("CHAT", player, "&fAktualne warpy na serwerze:");
                     Main.getInstance().getConfiguration().getWarps().forEach(warp -> TextUtil.sendMessage("CHAT", player, "&7- &f" + warp.getName() + " &6X:&f" + warp.getLocation().getX() + " &6Y:&f" + warp.getLocation().getY() + " &6Z:&f" + warp.getLocation().getZ()));
+                }
+                if (!player.hasPermission("warps.reload")) {
+                    TextUtil.sendMessage("CHAT", player, "&8>> &cNie posiadasz uprawnień do tej komendy! &8(&4warps.reload&8)");
+                    return false;
+                }
+                if (args[0].equalsIgnoreCase("reload")) {
+                    TextUtil.sendMessage("CHAT", player, "&aPrzeładowano config!");
+                    Main.getInstance().getConfiguration().load();
                 }
             } else if (args.length == 2) {
                 if (!player.hasPermission("warps.create")) {
@@ -52,15 +57,12 @@ public class WarpCommand implements TabExecutor {
                         TextUtil.sendMessage("CHAT", player, Main.getInstance().getMessageConfiguration().getWarpDoesntExist());
                         return false;
                     }
-                    int slot = findSlot(player.getInventory());
-                    if (slot != -1) {
-                        player.sendMessage("Znaleziono wolny slot na pozycji: " + slot);
-                    } else {
-                        player.sendMessage("Brak wolnych slotów.");
-                    }
+
+                    int slot = findSlot(WarpMenu.getInventory(player));
                     Main.getInstance().getConfiguration().getWarps().add(new Warp(name, item, player.getLocation(), slot));
                     TextUtil.sendMessage("CHAT", player, Main.getInstance().getMessageConfiguration().getCreatedWarp().replace("[warp-name]", name));
                     Main.getInstance().getConfiguration().save();
+                    Main.getInstance().getConfiguration().load();
                 }
                 if (!player.hasPermission("warps.delete")) {
                     TextUtil.sendMessage("CHAT", player, "&8>> &cNie posiadasz uprawnień do tej komendy! &8(&4warps.delete&8)");
@@ -83,7 +85,7 @@ public class WarpCommand implements TabExecutor {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (sender.hasPermission("warp.admin")) if (args.length == 1) return Set.of("create", "delete", "info").stream().toList();
+        if (sender.hasPermission("warp.admin")) if (args.length == 1) return Set.of("create", "delete", "info", "reload").stream().toList();
         return null;
     }
     private int findSlot(Inventory inventory) {

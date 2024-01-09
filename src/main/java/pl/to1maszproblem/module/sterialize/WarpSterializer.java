@@ -18,16 +18,16 @@ public class WarpSterializer implements ObjectSerializer<Warp> {
     public void serialize(@NonNull Warp object, @NonNull SerializationData data, @NonNull GenericsDeclaration generics) {
         data.add("name", object.getName());
         data.add("item", object.getItem());
-        data.add("slot", object.getSlot());
         data.add("location", object.getLocation());
+        data.add("slot", object.getSlot());
     }
 
     @Override
     public Warp deserialize(@NonNull DeserializationData data, @NonNull GenericsDeclaration generics) {
         String name = data.get("name", String.class);
         ItemStack item = data.get("item", ItemStack.class);
-        Integer slot = data.get("slot", Integer.class);
         Location location = data.get("location", Location.class);
+        Integer slot = data.get("slot", Integer.class);
         return new Warp(name, item, location, slot);
     }
 }
