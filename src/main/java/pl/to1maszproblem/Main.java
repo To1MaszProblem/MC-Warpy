@@ -13,6 +13,7 @@ import pl.to1maszproblem.factory.TeleportFactory;
 import pl.to1maszproblem.listener.InventoryClickListener;
 import pl.to1maszproblem.menu.WarpMenu;
 import pl.to1maszproblem.module.sterialize.WarpSterializer;
+import pl.to1maszproblem.notice.NoticeSerializer;
 import pl.to1maszproblem.task.TeleportTask;
 
 public final class Main extends JavaPlugin {
@@ -43,6 +44,7 @@ public final class Main extends JavaPlugin {
         messageConfiguration = ConfigManager.create(MessageConfiguration.class, it -> {
             it.withConfigurer(new YamlBukkitConfigurer(), new SerdesBukkit());
             it.withBindFile(this.getDataFolder() + "/messages.yml");
+            it.withSerdesPack(registry -> registry.register(new NoticeSerializer()));
             it.withRemoveOrphans(true);
             it.saveDefaults();
             it.load(true);
