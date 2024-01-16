@@ -18,7 +18,7 @@ public class WarpMenu {
         Main.getInstance().getConfiguration().getWarps().forEach(warp -> {
             int slot = warp.getSlot();
             if (slot >= 0) {
-                ItemStack warpItem = new ItemBuilder(warp.getItem()).setName(warp.getName()).build();
+                ItemStack warpItem = new ItemBuilder(warp.getItem()).setName("&a" + warp.getName()).addLores(TextUtil.fixColor(" "), TextUtil.fixColor("&7Kliknij aby zostać &aprzeteleportowanm&7!")).build();
                 inventory.setItem(slot, warpItem);
             }
         });
