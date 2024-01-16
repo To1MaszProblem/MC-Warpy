@@ -41,6 +41,7 @@ public class WarpCommand implements TabExecutor {
                 if (args[0].equalsIgnoreCase("reload")) {
                     TextUtil.sendMessage(player, "&aPrzeładowano config!");
                     Main.getInstance().getConfiguration().load();
+                    Main.getInstance().getMessageConfiguration().load();
                 }
             } else if (args.length == 2) {
                 if (!player.hasPermission("warps.create")) {
