@@ -8,4 +8,4 @@ Plugin na warpy w gui od 1.16.5-1.19
 [Config z screena](https://github.com/To1MaszProblem/MC-Warpy/files/13877580/config.zip)
 
 
-[**Pobierz plik .jar**](MC-Warpy-1.0.jar)
+[**Pobierz plik .jar**](https://www.spigotmc.org/resources/mc-warpy.114503/)
