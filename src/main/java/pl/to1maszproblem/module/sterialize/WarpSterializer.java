@@ -19,6 +19,7 @@ public class WarpSterializer implements ObjectSerializer<Warp> {
         data.add("name", object.getName());
         data.add("item", object.getItem());
         data.add("location", object.getLocation());
+        data.add("permission", object.getPermission());
         data.add("slot", object.getSlot());
     }
 
@@ -27,7 +28,8 @@ public class WarpSterializer implements ObjectSerializer<Warp> {
         String name = data.get("name", String.class);
         ItemStack item = data.get("item", ItemStack.class);
         Location location = data.get("location", Location.class);
+        String permission = data.get("permission", String.class);
         Integer slot = data.get("slot", Integer.class);
-        return new Warp(name, item, location, slot);
+        return new Warp(name, item, location, permission, slot);
     }
 }

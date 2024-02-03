@@ -1,5 +1,5 @@
 name: MC-Warpy
-version: '1.0'
+version: '1.1'
 main: pl.to1maszproblem.Main
 api-version: 1.16
 authors: [ To1MaszProblem ]

@@ -23,12 +23,12 @@ public class Configuration extends OkaeriConfig {
                     .setName("&aSpawn")
                     .addLore(" ")
                     .addLore(TextUtil.fixColor("&7Kliknij aby zostać &aprzeteleportowanm&7!")).build(),
-                    new Location(Bukkit.getWorld("world"), 0.0, 100.0, 0.0), 11),
+                    new Location(Bukkit.getWorld("world"), 0.0, 100.0, 0.0), "false",11),
             new Warp("pvp", new ItemBuilder(Material.DIAMOND_SWORD)
                     .setName("&cStrefa pvp")
                     .addLore(" ")
                     .addLore(TextUtil.fixColor("&7Kliknij aby zostać &aprzeteleportowanm&7!")).build(),
-                    new Location(Bukkit.getWorld("world"), 10.0, 100.0, 10.0), 15));
+                    new Location(Bukkit.getWorld("world"), 10.0, 100.0, 10.0), "false",15));
     private List<ItemMenu> items = Arrays.asList(
             new ItemMenu(new ItemBuilder(Material.PAPER).setName("&cJak działają warpy?").addLores(" ", "&7Wybierz warp do którego chcesz być przeteleportowany!").build(), 13));
 

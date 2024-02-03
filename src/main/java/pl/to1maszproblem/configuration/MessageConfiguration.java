@@ -10,6 +10,7 @@ public class MessageConfiguration extends OkaeriConfig {
     private Notice teleportCanceled = new Notice(NoticeType.MESSAGE,"&cTeleportacja została anulowana!");
     private Notice timeToTeleport = new Notice(NoticeType.MESSAGE,"&fZostaniesz przeteleportowany za &a[time] &fsekund!");
     private Notice teleported = new Notice(NoticeType.SUBTITLE ,"&aZostałeś przeteleportowany do warpu [warp]!");
+    private Notice teleportPermission = new Notice(NoticeType.MESSAGE,"&cNie posiadasz uprawnień do teleportacji na warp [warp]!");
     private String holdItemToCreate = "&cMusisz trzymać item w ręce aby stworzyć warp!";
     private String warpAlreadyExist = "&cWarp o takiej nazwie już istnieje!";
     private String createdWarp = "&aPomyslnie stworzono warp o nazwie [warp-name]!";

@@ -1,5 +1,6 @@
 package pl.to1maszproblem.listener;
 
+import com.google.common.collect.ImmutableMultimap;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,7 +23,15 @@ public class InventoryClickListener implements Listener {
 
             Main.getInstance().getConfiguration().getWarps().forEach(warp -> {
                 if (clickedItem != null && clickedItem.getType() != null && clickedItem.isSimilar(warp.getItem())) {
+                    if(!warp.getPermission().equals("false")) {
+                        if (!player.hasPermission(warp.getPermission())) {
+                            Main.getInstance().getMessageConfiguration().getTeleportPermission().addPlaceholder(ImmutableMultimap.of("[warp]", warp.getName()));
+                            return;
+                        }
+                    }
+
                     player.closeInventory();
+                    if (player.hasPermission("warps.admin")) { player.teleportAsync(warp.getLocation()); return; }
                             Main.getInstance().getTeleportFactory().addTeleport(player,
                                     warp.getLocation(),
                                     Main.getInstance().getConfiguration().getTeleportTime());

@@ -93,5 +93,10 @@
             <artifactId>okaeri-configs-serdes-bukkit</artifactId>
             <version>5.0.0-beta.5</version>
         </dependency>
+        <dependency>
+            <groupId>net.wesjd</groupId>
+            <artifactId>anvilgui</artifactId>
+            <version>1.6.6-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

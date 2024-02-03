@@ -16,6 +16,8 @@ public class Warp implements Serializable {
 
     private Location location;
 
+    private String permission;
+
     private int slot;
 
 }
